@@ -14,21 +14,21 @@ message.value = localStorageData.hasOwnProperty('message')
   ? localStorageData.message
   : '';
 
-const handleInput =(event, field) => {
+const handleInput = (event, field) => {
   const value = event.target.value;
   localStorageData = { ...localStorageData, [field]: value };
   localStorage.setItem(localStorageKey, JSON.stringify(localStorageData));
-}
-
-email.addEventListener('input', event => handleInput(event, 'email'));
-message.addEventListener('input', event => handleInput(event, 'message'));
+};
 
 const handleSubmit = event => {
   event.preventDefault();
+  const form = event.target;
 
   console.log({ email: email.value, message: message.value });
   localStorage.clear();
   form.reset();
 };
 
+email.addEventListener('input', event => handleInput(event, 'email'));
+message.addEventListener('input', event => handleInput(event, 'message'));
 feedbackForm.addEventListener('submit', handleSubmit);
