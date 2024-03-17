@@ -1,6 +1,6 @@
 import { images } from './gallery-datas';
 import SimpleLightbox from 'simplelightbox';
-import "simplelightbox/dist/simple-lightbox.min.css";
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const galleryContainer = document.getElementById('gallery');
 
@@ -22,4 +22,9 @@ const generatedLayout = images
 
 galleryContainer.insertAdjacentHTML('beforeend', generatedLayout);
 
-const slider = new SimpleLightbox('ul.gallery a');
+const sliderOptions = {
+  captionsData: 'alt',
+  captionDelay: 250,
+};
+
+const slider = new SimpleLightbox('ul.gallery a', sliderOptions);
