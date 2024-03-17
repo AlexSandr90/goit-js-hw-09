@@ -24,6 +24,11 @@ const handleSubmit = event => {
   event.preventDefault();
   const form = event.target;
 
+  if (email.value.length === 0 || message.value.length === 0) {
+    alert('The email and message fields must be filled in');
+    throw new Error('The email and message fields must be filled in');
+  }
+
   console.log({ email: email.value, message: message.value });
   localStorage.clear();
   form.reset();
